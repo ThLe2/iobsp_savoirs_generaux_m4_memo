@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fiche mémo — Les conditions d&#x27;accès et d&#x27;exercice</title>
+<style>
+:root{--prune:#8C1E70;--prune-fonce:#5E1349;--prune-clair:#F4E6EE;--accent:#C77BAA;
+ --vert:#283C28;--gris:#3C3C3C;--gris-moyen:#8A7A85;--filet:#E8DCE5;--creme:#FAF6F8;
+ --ok:#2F7A4F;--ko:#B23B3B;--amb:#B5852A;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--creme);color:var(--gris);
+ font-family:"Nunito","Segoe UI",Helvetica,Arial,sans-serif;font-size:16px;line-height:1.62}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px 60px}
+header.bandeau{background:var(--prune-fonce);color:#fff;padding:18px 0;border-bottom:4px solid var(--accent)}
+header.bandeau .wrap{padding-bottom:0}
+.chapitre{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#EAD3E3}
+.chapitre span{color:var(--accent);margin:0 6px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:27px;line-height:1.25;margin:8px 0 4px;color:#fff}
+.sous{color:#EAD3E3;font-size:14.5px;margin:0}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:20px;color:var(--prune-fonce);
+ margin:34px 0 0;padding-bottom:8px;border-bottom:2px solid var(--filet)}
+h2 .num{color:var(--accent);margin-right:8px}
+h3{font-size:15px;color:var(--vert);margin:20px 0 8px;letter-spacing:.02em}
+.carte{background:#fff;border:1px solid var(--filet);border-radius:10px;padding:20px 22px;margin:18px 0;
+ box-shadow:0 1px 2px rgba(94,19,73,.05)}
+.enc{background:var(--prune-clair);border-left:5px solid var(--prune);padding:14px 18px;
+ border-radius:0 8px 8px 0;margin:18px 0;font-size:15.2px}
+.enc .t{display:block;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+ font-weight:800;color:var(--prune-fonce);margin-bottom:6px}
+.enc.al{background:#FBF4F4;border-left-color:var(--ko)}.enc.al .t{color:var(--ko)}
+.enc.ci{background:#FCF8F0;border-left-color:var(--amb)}.enc.ci .t{color:#8A6418}
+.situ{background:#FCF9FB;border:1px dashed var(--filet);border-radius:8px;padding:16px 18px;margin:16px 0;font-size:15.2px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.duo>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:15px 17px;font-size:14.8px}
+.duo .h{font-weight:800;color:var(--prune-fonce);margin-bottom:7px;font-size:14.5px}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.tri>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:14px 15px;font-size:14.3px}
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.quad>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:12px 13px;font-size:13.6px}
+.quad .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13px;
+ text-transform:uppercase;letter-spacing:.04em}
+.tri .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13.5px;
+ text-transform:uppercase;letter-spacing:.05em}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.8px;background:#fff}
+th,td{border:1px solid var(--filet);padding:9px 12px;text-align:left}
+thead th{background:var(--prune-clair);color:var(--prune-fonce);font-size:13.5px}
+tbody th{font-weight:600;color:var(--gris)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td,tr.tot th{background:#FBF3F8;font-weight:800;color:var(--prune-fonce)}
+.dl{display:inline-flex;align-items:center;gap:9px;background:var(--prune);color:#fff;text-decoration:none;
+ padding:11px 20px;border-radius:8px;font-weight:700;font-size:15px;margin:20px 0 4px}
+.dl:hover{background:var(--prune-fonce)}
+ol.q{padding-left:0;list-style:none;counter-reset:q}
+ol.q>li{margin:16px 0;padding-left:38px;position:relative}
+ol.q>li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:1px;
+ width:26px;height:26px;border-radius:50%;background:var(--prune-clair);color:var(--prune-fonce);
+ font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+b,strong{color:var(--vert)}
+footer{text-align:center;font-size:12.5px;color:var(--gris-moyen);padding:26px 18px 12px;
+ border-top:1px solid var(--filet);margin-top:44px}
+@media(max-width:860px){.quad{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.duo,.tri,.quad{grid-template-columns:1fr}h1{font-size:22px}}
+@media print{body{background:#fff}.dl{display:none}header.bandeau{background:#5E1349 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+td{vertical-align:top}td:first-child{white-space:nowrap}.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.tri>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:14px 15px;font-size:14.3px}.tri .h,.duo .h{font-weight:800;color:var(--prune-fonce);margin-bottom:6px;font-size:13.5px;text-transform:uppercase;letter-spacing:.05em}.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}.duo>div{background:#fff;border:1px solid var(--filet);border-radius:9px;padding:15px 17px;font-size:14.8px}@media(max-width:640px){.tri,.duo{grid-template-columns:1fr}}.enc,tr,.tri,.duo{break-inside:avoid}</style></head>
+<body>
+<header class="bandeau"><div class="wrap">
+ <div class="chapitre">IOBSP · Savoirs généraux <span>/</span> Module 4</div><h1>Les conditions d'accès et d'exercice</h1><p class="sous">Fiche mémo — conditions, capacité, assurance, garantie, contrôles</p>
+</div></header>
+<div class="wrap">
+<a class="dl" href="IOBSP_SG_M4_Fiche_memo.pdf" download>⬇ Télécharger la fiche mémo (PDF)</a>
+<h2><span class="num">1 ·</span>Les conditions d'accès</h2>
+<div class="carte">
+<table><thead><tr><th>Condition</th><th>Texte</th><th>L'essentiel</th></tr></thead><tbody>
+<tr><td><b>Immatriculation</b></td><td>L. 519-3-1 · L. 546-1</td><td>Registre unique tenu par l'ORIAS. Préalable à tout acte. Personnelle. Renouvellement annuel. Registre public.</td></tr>
+<tr><td><b>Capacité professionnelle</b></td><td>R. 519-8 à R. 519-11</td><td>Diplôme, formation ou expérience complétée par une formation. Le niveau dépend de la catégorie et du caractère complémentaire de l'activité.</td></tr>
+<tr><td><b>Honorabilité</b></td><td>L. 500-1</td><td>Absence de condamnation définitive pour les infractions listées. Bulletin n° 2 du casier judiciaire.</td></tr>
+<tr><td><b>RC professionnelle</b></td><td>L. 519-3-4 · R. 519-16</td><td><b>500 000 €</b> par sinistre et <b>800 000 €</b> par année d'assurance, au minimum. Sauf couverture par le mandant.</td></tr>
+<tr><td><b>Garantie financière</b></td><td>L. 519-4 · R. 519-17</td><td><b>115 000 €</b> au minimum, et jamais moins du double du montant moyen mensuel des fonds encaissés. Uniquement si des fonds sont confiés.</td></tr>
+<tr><td><b>Association agréée</b></td><td>L. 519-11</td><td>Depuis le 1er avril 2022, pour les courtiers et leurs mandataires. Dispensés : les mandataires d'établissements, exclusifs ou non, et leurs mandataires.</td></tr>
+</tbody></table>
+<div class="enc al"><span class="t">AVANT LE PREMIER DOSSIER</span>Toutes ces conditions sont exigées avant le premier acte d'intermédiation, puis vérifiées à chaque renouvellement. On ne régularise pas après coup.</div></div>
+<h2><span class="num">2 ·</span>L'immatriculation et l'information du client</h2>
+<div class="carte">
+<p>L'ORIAS tient le registre unique des intermédiaires en assurance, banque et finance. Les salariés ne sont pas immatriculés, mais leur employeur vérifie leur capacité et leur honorabilité. Toute modification (adresse, catégorie, cessation) doit être notifiée. L'établissement qui recourt à un intermédiaire doit vérifier son immatriculation.</p>
+<div class="enc"><span class="t">À COMMUNIQUER AU CLIENT AVANT TOUTE PRESTATION</span>Nom ou dénomination et adresse · numéro d'immatriculation ORIAS et moyen de le vérifier · catégorie d'IOBSP · liens financiers avec des établissements · pour le mandataire exclusif, l'établissement avec lequel il travaille en exclusivité ; pour le courtier et le mandataire non exclusif, les établissements qui représentent plus du tiers de son chiffre d'affaires ; pour le mandataire d'intermédiaire, l'identité de son mandant · procédures de réclamation et de recours, coordonnées de l'ACPR. Ces mentions figurent aussi sur la publicité et les documents remis.</div></div>
+<h2><span class="num">3 ·</span>La capacité professionnelle</h2>
+<div class="carte">
+<table><thead><tr><th>Niveau</th><th>Qui est concerné</th><th>Comment le justifier</th></tr></thead><tbody>
+<tr><td><b>Niveau I</b><br>R. 519-8</td><td>Courtiers et leurs mandataires, mandataires non exclusifs et leurs mandataires — hors activité complémentaire.</td><td>Licence dans une matière visée · ou <b>150 heures</b> de formation · ou un an d'expérience dans les trois dernières années, complété par <b>40 heures</b>.</td></tr>
+<tr><td><b>Niveau II</b><br>R. 519-9</td><td>Mandataires exclusifs et leurs mandataires · mandataires de courtiers exerçant à titre complémentaire.</td><td>Bac + 2 dans une matière visée · ou <b>80 heures</b> de formation · ou un an d'expérience dans les trois dernières années, complété par <b>40 heures</b>.</td></tr>
+<tr><td><b>Niveau III</b><br>R. 519-10</td><td>Mandataires exclusifs et non exclusifs, et leurs mandataires, qui intermédient en complément d'un bien ou d'un service.</td><td>Bac + 2 dans une matière visée · ou six mois d'expérience dans les deux dernières années · ou une formation d'une durée suffisante.</td></tr>
+</tbody></table>
+<div class="duo"><div><div class="h">Les salariés</div>Même niveau que l'IOBSP qui les emploie. Tolérance : six mois après la prise de poste, dans un poste adapté et sous la responsabilité d'une personne qualifiée.</div><div><div class="h">Le nombre d'heures ne fait pas le niveau</div>C'est la catégorie et le caractère complémentaire de l'activité qui fixent le niveau ; les heures en découlent. En crédit immobilier, la formation continue est annuelle.</div></div></div>
+<h2><span class="num">4 ·</span>L'honorabilité</h2>
+<div class="carte">
+<p>Concerne l'IOBSP personne physique, les dirigeants de la personne morale, les personnes responsables de l'intermédiation et les salariés qui l'exercent. Elle se perd par une condamnation définitive pour les infractions listées à l'article L. 500-1 (escroquerie, abus de confiance, blanchiment, corruption, faux, fraude fiscale…), une interdiction d'exercer ou une faillite personnelle.</p>
+<div class="enc al"><span class="t">BULLETIN N° 2, PAS BULLETIN N° 3</span>Le bulletin n° 3, que chacun obtient en ligne, ne mentionne que les condamnations les plus graves. Le bulletin n° 2, plus complet, n'est pas délivré à l'intéressé : l'ORIAS le demande. Et l'honorabilité se vérifie à chaque renouvellement.</div></div>
+<h2><span class="num">5 ·</span>RC professionnelle et garantie financière</h2>
+<div class="carte">
+<table><thead><tr><th></th><th>RC professionnelle</th><th>Garantie financière</th></tr></thead><tbody>
+<tr><td><b>Ce qu'elle couvre</b></td><td>Les conséquences d'une faute professionnelle.</td><td>La restitution des fonds confiés par les clients.</td></tr>
+<tr><td><b>Qui</b></td><td>Le mandataire est couvert par celui pour le compte duquel il agit (art. L. 519-3-4) ; dans les autres cas, contrat à son nom. Le courtier : toujours à son nom.</td><td>Tout IOBSP qui se voit confier des fonds, même à titre occasionnel.</td></tr>
+<tr><td><b>Minima</b></td><td>500 000 € par sinistre, 800 000 € par année d'assurance. Franchise plafonnée, non opposable aux victimes.</td><td>115 000 €, et au moins le double du montant moyen mensuel des fonds encaissés sur douze mois.</td></tr>
+<tr><td><b>Qui l'accorde</b></td><td>Une entreprise d'assurance.</td><td>Une caution d'un établissement de crédit, d'une société de financement habilitée ou d'une entreprise d'assurance.</td></tr>
+</tbody></table>
+<div class="duo"><div><div class="h">Les minima sont des minima</div>Au regard d'une production réelle en crédit immobilier, les montants légaux sont souvent insuffisants : ce n'est pas un objectif.</div><div><div class="h">La règle d'or</div>Ne pas encaisser de fonds, c'est ne pas avoir besoin de garantie financière. Et aucune rémunération avant le versement effectif des fonds prêtés (art. L. 519-6), sauf service de conseil indépendant, art. L. 519-6-1.</div></div></div>
+<h2><span class="num">6 ·</span>Qui contrôle, qui sanctionne</h2>
+<div class="carte">
+<table><thead><tr><th>Autorité</th><th>Sur quoi</th><th>Ce qu'elle peut prononcer</th></tr></thead><tbody>
+<tr><td><b>ORIAS</b></td><td>Les conditions d'immatriculation.</td><td>Refus d'immatriculation, radiation — donc arrêt de l'activité.</td></tr>
+<tr><td><b>ACPR</b></td><td>Règles de bonne conduite, organisation, contrôle interne, LCB-FT.</td><td>Avertissement, blâme, interdiction d'exercer, radiation, sanction pécuniaire, publication.</td></tr>
+<tr><td><b>DGCCRF</b></td><td>Pratiques commerciales, publicité, information précontractuelle.</td><td>Injonction, amende administrative, transmission au parquet.</td></tr>
+<tr><td><b>Association agréée</b></td><td>Les engagements de l'adhérent, dont la formation continue.</td><td>Retrait de la qualité de membre, notifié à l'ORIAS et à l'ACPR : sans adhésion, plus d'immatriculation.</td></tr>
+<tr><td><b>Juge pénal</b></td><td>Exercice sans immatriculation ; intermédiation pour le compte d'une personne non agréée.</td><td>Jusqu'à 2 ans d'emprisonnement et 6 000 € d'amende (art. L. 546-4) ; 2 ans et 30 000 € dans le second cas (art. L. 571-15). Défaut de garantie financière : 1 an et 15 000 € (art. L. 571-16).</td></tr>
+</tbody></table></div>
+<h2><span class="num">7 ·</span>Ce qui tombe à l'examen</h2>
+<div class="carte">
+<ol class="q"><li>500 000 € par sinistre, 800 000 € par année ; 115 000 € de garantie financière.</li><li>La garantie financière n'est due que si des fonds sont confiés — même occasionnellement.</li><li>Les mandataires d'établissements, exclusifs ou non, sont dispensés d'association agréée ; le courtier et ses mandataires ne le sont pas.</li><li>Bulletin n° 2, pas bulletin n° 3.</li><li>Les conditions sont exigées avant le premier acte d'intermédiation.</li></ol></div>
+
+<footer>TMK Performances - N° Siret : 49841924100027 - Code NAF : 8559A</footer>
+</div>
+</body></html>
